@@ -17,7 +17,7 @@ var S = {
   init: function (start) {
     if (start != 0){
       var action = window.location.href,
-          i = action.indexOf('?a=');  
+          i = action.indexOf('?a=');
 
       S.Drawing.init('.canvas', start);
       document.body.classList.add('body--ready');
@@ -41,7 +41,7 @@ var S = {
       if (i !== -1) {
         S.UI.simulate(decodeURI(action).substring(i + 3));
       } else {
-        S.UI.simulate('|#countdown 3||祝|孟老大|生日快乐|祝你|生日快乐|祝你幸福|祝你健康|前途光明|祝你|生日快乐！|#icon heart|#icon heart-empty|#icon heart');
+        S.UI.simulate('|#countdown 3||祝|颖可爱|生日快乐|祝你|生日快乐|祝你幸福|祝你健康|前途光明|祝你|生日快乐！|#icon heart|#icon heart-empty|#icon heart');
       }
 
       S.Drawing.loop(function () {
@@ -59,7 +59,7 @@ S.Drawing = (function () {
       context,
       renderFn
       requestFrame = window.requestAnimationFrame       ||
-                     window.webkitRequestAnimationFrame ||  
+                     window.webkitRequestAnimationFrame ||
                      window.mozRequestAnimationFrame    ||
                      window.oRequestAnimationFrame      ||
                      window.msRequestAnimationFrame     ||
@@ -75,7 +75,7 @@ S.Drawing = (function () {
       this.adjustCanvas();
 
       window.addEventListener('resize', function (e) {
-        S.Drawing.adjustCanvas();  
+        S.Drawing.adjustCanvas();
       });
     },
 
@@ -120,8 +120,8 @@ S.UI = (function () {
   delay2 = 5000;
   var canvas = document.querySelector('.canvas'),
       interval,
-      isTouch = false, //('ontouchstart' in window || navigator.msMaxTouchPoints),  
-      currentAction,  
+      isTouch = false, //('ontouchstart' in window || navigator.msMaxTouchPoints),
+      currentAction,
       resizeTimer,
       time,
       maxShapeSize = 30,
@@ -129,7 +129,7 @@ S.UI = (function () {
       sequence = [],
       cmd = '#';
 
-  function formatTime(date) {  
+  function formatTime(date) {
     var h = date.getHours(),
         m = date.getMinutes(),
     m = m < 10 ? '0' + m : m;
@@ -497,7 +497,7 @@ S.Dot.prototype = {
         dy = this.p.y - n.y,
         d = Math.sqrt(dx * dx + dy * dy);
 
-    return details ? [dx, dy, d] : d;  
+    return details ? [dx, dy, d] : d;
   },
 
   move: function (p, avoidStatic) {
@@ -515,25 +515,25 @@ S.Dot.prototype = {
 
 S.ShapeBuilder = (function () {
   var gap = 8,
-      start =  S.Drawing.getStatus();  
+      start =  S.Drawing.getStatus();
   // if (start !== '0'){
   //   gap = 13;
   // }else{
-  //   gap = 8;      
+  //   gap = 8;
   // }
   if ((window.innerWidth>500 && window.innerHeight>500)){
-    gap = 13;    
+    gap = 13;
   }
 
   var shapeCanvas = document.createElement('canvas'),
-      shapeContext = shapeCanvas.getContext('2d'),  
+      shapeContext = shapeCanvas.getContext('2d'),
       fontSize = 500,
       fontFamily = 'Avenir, Helvetica Neue, Helvetica, Arial, sans-serif';
 
   function fit() {
     shapeCanvas.width = Math.floor(window.innerWidth / gap) * gap;
-    shapeCanvas.height = Math.floor(window.innerHeight / gap) * gap;  
-    shapeContext.fillStyle = 'red';  
+    shapeCanvas.height = Math.floor(window.innerHeight / gap) * gap;
+    shapeContext.fillStyle = 'red';
     shapeContext.textBaseline = 'middle';
     shapeContext.textAlign = 'center';
   }
@@ -543,7 +543,7 @@ S.ShapeBuilder = (function () {
         dots = [],
         pixels,
         x = 0,
-        y = 0,  
+        y = 0,
         fx = shapeCanvas.width,
         fy = shapeCanvas.height,
         w = 0,
@@ -584,7 +584,7 @@ S.ShapeBuilder = (function () {
 
   function init() {
     fit();
-    window.addEventListener('resize', fit);  
+    window.addEventListener('resize', fit);
   }
 
   // Init
