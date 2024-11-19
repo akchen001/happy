@@ -17,7 +17,7 @@ var S = {
   init: function (start) {
     if (start != 0){
       var action = window.location.href,
-          i = action.indexOf('?a=');
+          i = action.indexOf('?a=');  
 
       S.Drawing.init('.canvas', start);
       document.body.classList.add('body--ready');
@@ -59,7 +59,7 @@ S.Drawing = (function () {
       context,
       renderFn
       requestFrame = window.requestAnimationFrame       ||
-                     window.webkitRequestAnimationFrame ||
+                     window.webkitRequestAnimationFrame ||  
                      window.mozRequestAnimationFrame    ||
                      window.oRequestAnimationFrame      ||
                      window.msRequestAnimationFrame     ||
@@ -75,7 +75,7 @@ S.Drawing = (function () {
       this.adjustCanvas();
 
       window.addEventListener('resize', function (e) {
-        S.Drawing.adjustCanvas();
+        S.Drawing.adjustCanvas();  
       });
     },
 
@@ -116,16 +116,12 @@ S.Drawing = (function () {
 
 S.UI = (function () {
   var delay1,delay2;
-  // delay1 = 3000;
-  // delay2 = 5000;
-  if （window.innerWidth>500 && window.innerHeight>500）{                    
-      delay1 = 1000;
-      delay2 = 2000;  
-  }
+  delay1 = 3000;
+  delay2 = 5000;
   var canvas = document.querySelector('.canvas'),
       interval,
-      isTouch = false, //('ontouchstart' in window || navigator.msMaxTouchPoints),
-      currentAction,
+      isTouch = false, //('ontouchstart' in window || navigator.msMaxTouchPoints),  
+      currentAction,  
       resizeTimer,
       time,
       maxShapeSize = 30,
@@ -133,7 +129,7 @@ S.UI = (function () {
       sequence = [],
       cmd = '#';
 
-  function formatTime(date) {
+  function formatTime(date) {  
     var h = date.getHours(),
         m = date.getMinutes(),
     m = m < 10 ? '0' + m : m;
@@ -501,7 +497,7 @@ S.Dot.prototype = {
         dy = this.p.y - n.y,
         d = Math.sqrt(dx * dx + dy * dy);
 
-    return details ? [dx, dy, d] : d;
+    return details ? [dx, dy, d] : d;  
   },
 
   move: function (p, avoidStatic) {
@@ -523,10 +519,10 @@ S.ShapeBuilder = (function () {
   // if (start !== '0'){
   //   gap = 13;
   // }else{
-  //   gap = 8;  
+  //   gap = 8;      
   // }
   if ((window.innerWidth>500 && window.innerHeight>500)){
-    gap = 8;  
+    gap = 13;    
   }
 
   var shapeCanvas = document.createElement('canvas'),
@@ -536,8 +532,8 @@ S.ShapeBuilder = (function () {
 
   function fit() {
     shapeCanvas.width = Math.floor(window.innerWidth / gap) * gap;
-    shapeCanvas.height = Math.floor(window.innerHeight / gap) * gap;
-    shapeContext.fillStyle = 'red';
+    shapeCanvas.height = Math.floor(window.innerHeight / gap) * gap;  
+    shapeContext.fillStyle = 'red';  
     shapeContext.textBaseline = 'middle';
     shapeContext.textAlign = 'center';
   }
@@ -547,7 +543,7 @@ S.ShapeBuilder = (function () {
         dots = [],
         pixels,
         x = 0,
-        y = 0,
+        y = 0,  
         fx = shapeCanvas.width,
         fy = shapeCanvas.height,
         w = 0,
@@ -588,7 +584,7 @@ S.ShapeBuilder = (function () {
 
   function init() {
     fit();
-    window.addEventListener('resize', fit);
+    window.addEventListener('resize', fit);  
   }
 
   // Init
