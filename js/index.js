@@ -116,8 +116,12 @@ S.Drawing = (function () {
 
 S.UI = (function () {
   var delay1,delay2;
-  delay1 = 3000;
-  delay2 = 5000;
+  // delay1 = 3000;
+  // delay2 = 5000;
+  if （window.innerWidth>500 && window.innerHeight>500）{                    
+      delay1 = 1000;
+      delay2 = 2000;  
+  }
   var canvas = document.querySelector('.canvas'),
       interval,
       isTouch = false, //('ontouchstart' in window || navigator.msMaxTouchPoints),
@@ -515,18 +519,18 @@ S.Dot.prototype = {
 
 S.ShapeBuilder = (function () {
   var gap = 8,
-      start =  S.Drawing.getStatus();
+      start =  S.Drawing.getStatus();  
   // if (start !== '0'){
   //   gap = 13;
   // }else{
-  //   gap = 8;
+  //   gap = 8;  
   // }
   if ((window.innerWidth>500 && window.innerHeight>500)){
-    gap = 8;
+    gap = 8;  
   }
 
   var shapeCanvas = document.createElement('canvas'),
-      shapeContext = shapeCanvas.getContext('2d'),
+      shapeContext = shapeCanvas.getContext('2d'),  
       fontSize = 500,
       fontFamily = 'Avenir, Helvetica Neue, Helvetica, Arial, sans-serif';
 
